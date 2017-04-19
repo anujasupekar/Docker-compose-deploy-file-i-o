@@ -1,6 +1,6 @@
-### devops-hw4
+### DevOps
 
-####Docker compose
+#### Docker compose
 
 1. create 3 Dockerfiles for setting up redis, proxy(proxy-container) and the HW3(devops-hw3) app container. 
 2. create docker-compose.yml file which will build image for proxy and HW3 app, run container and orchestrate the ports respectively for the redis, proxy and HW3 app. It also links the proxy and HW3 app with the redis container.
@@ -13,7 +13,7 @@
 [Screencast for Docker Compose](https://youtu.be/cgeqO50LySI)
 
 
-####Docker Deploy 
+#### Docker Deploy 
 
 1. Run a private docker registry in port 5000
 2. post-receive file (under part2/blue and part2/green) added in green.git/hooks and blue.git/hooks.
@@ -33,7 +33,7 @@
 [Screencast for Docker Deploy](https://youtu.be/DuQcWvdkmFw)
 
 
-####File IO 
+#### File IO 
 
 1. Created a container that runs a command that outputs to a file which is named as the send-container
 2. The Dockerfile for this container uses socat to map file access to read file container and expose over port 9001
