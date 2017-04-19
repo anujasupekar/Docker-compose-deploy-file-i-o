@@ -1,0 +1,16 @@
+#!/bin/sh
+
+GIT_WORK_TREE=/root/part2/Deployment/deploy/green-www git checkout -f
+CURDIR=/root/part2/Deployment/deploy/green-www
+cd $CURDIR
+
+docker build -t green-app .
+docker tag green-app localhost:5000/green:latest
+docker push localhost:5000/green:latest
+
+docker pull localhost:5000/green:latest
+docker stop green-app
+docker rm green-app
+docker rmi localhost:5000/green:current
+docker tag localhost:5000/green:latest localhost:5000/green:current
+docker run -p 50501:8080 -d --name green-app localhost:5000/green:latest

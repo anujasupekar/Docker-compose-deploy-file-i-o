@@ -1,0 +1,16 @@
+#!/bin/sh
+
+GIT_WORK_TREE=/root/part2/Deployment/deploy/blue-www git checkout -f
+CURDIR=/root/part2/Deployment/deploy/blue-www
+cd $CURDIR
+
+docker build -t blue-app .
+docker tag blue-app localhost:5000/blue:latest
+docker push localhost:5000/blue:latest
+
+docker pull localhost:5000/blue:latest
+docker stop blue-app
+docker rm blue-app
+docker rmi localhost:5000/blue:current
+docker tag localhost:5000/blue:latest localhost:5000/blue:current
+docker run -p 50502:8080 -d --name blue-app localhost:5000/blue:latest
